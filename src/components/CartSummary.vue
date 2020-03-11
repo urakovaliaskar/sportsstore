@@ -1,0 +1,25 @@
+<template>
+  <div class="float-right">
+    <small>
+      Your cart:
+      <span v-if="itemCount > 0">{{itemCount}} item(s) {{totalPrice || currency }}</span>
+      <span v-else>(empty)</span>
+    </small>
+    <router-link to="/cart" class="btn btn-sm bg-dark text-white" :disabled="itemCount == 0">
+        <i class="fa fa-shopping-cart" />
+    </router-link>
+  </div>
+</template>
+
+<script>
+import {mapGetters} from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters(["itemCount", "totalPrice"])
+    }
+};
+</script>
+
+<style>
+</style>
